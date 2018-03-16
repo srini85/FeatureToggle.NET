@@ -1,0 +1,6 @@
+*.suo
+obj
+bin
+App_Data
+*.user
+.vs/
