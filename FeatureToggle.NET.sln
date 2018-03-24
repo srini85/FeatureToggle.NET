@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tst", "tst", "{86F5659B-523
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureToggle.NET.Tests", "tst\FeatureToggle.NET.Tests\FeatureToggle.NET.Tests.csproj", "{9797C39F-C754-4DD0-9C60-E4CF18944AA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleFeatureToggledService", "SampleFeatureToggledService\SampleFeatureToggledService.csproj", "{5C16C99E-880A-41FD-87C4-525DCBB3D923}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleFeatureToggledService", "src\SampleFeatureToggledService\SampleFeatureToggledService.csproj", "{5C16C99E-880A-41FD-87C4-525DCBB3D923}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
