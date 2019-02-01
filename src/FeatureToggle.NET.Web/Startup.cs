@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using FeatureToggle.NET.Core.Services;
+using FeatureToggle.NET.Store;
+using FeatureToggle.NET.Store.Interfaces;
+using FeatureToggle.NET.Store.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace FeatureToggle.NET.Web
@@ -32,6 +29,9 @@ namespace FeatureToggle.NET.Web
 			{
 				c.SwaggerDoc("v1", new Info { Title = "FeatureToggle.NET", Version = "v1" });
 			});
+
+			services.AddScoped<IFeatureToggleDbContext, FeatureToggleDbContext>();
+			services.AddScoped<IFeatureValueService, FeatureValueService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
