@@ -1,9 +1,11 @@
 ﻿using FeatureToggle.NET.Core.Services;
 using FeatureToggle.NET.Core.Types;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FeatureToggle.NET.Web.Controllers
 {
+	[Authorize]
 	[Route("api/[controller]")]
 	public class FeatureValueController : Controller
 	{
