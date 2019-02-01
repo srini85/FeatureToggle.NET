@@ -2,7 +2,7 @@
 
 namespace FeatureToggle.NET.Store.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class v10 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,11 +20,26 @@ namespace FeatureToggle.NET.Store.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Features",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Features", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FeatureValues",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    Value = table.Column<string>(nullable: true)
+                    Type = table.Column<string>(nullable: true),
+                    Value = table.Column<string>(nullable: true),
+                    FeatureId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -36,6 +51,9 @@ namespace FeatureToggle.NET.Store.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Environments");
+
+            migrationBuilder.DropTable(
+                name: "Features");
 
             migrationBuilder.DropTable(
                 name: "FeatureValues");

@@ -2,16 +2,14 @@
 using FeatureToggle.NET.Store;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FeatureToggle.NET.Store.Migrations
 {
     [DbContext(typeof(FeatureToggleDbContext))]
-    [Migration("20190201002809_1-0")]
-    partial class _10
+    partial class FeatureToggleDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,10 +29,26 @@ namespace FeatureToggle.NET.Store.Migrations
                     b.ToTable("Environments");
                 });
 
+            modelBuilder.Entity("FeatureToggle.NET.Core.Types.Feature", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Features");
+                });
+
             modelBuilder.Entity("FeatureToggle.NET.Core.Types.FeatureValue", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("FeatureId");
 
                     b.Property<string>("Type");
 

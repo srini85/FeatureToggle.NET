@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FeatureToggle.NET.Store.Migrations
 {
     [DbContext(typeof(FeatureToggleDbContext))]
-    [Migration("20190201002634_ver1")]
-    partial class ver1
+    [Migration("20190201051339_v1.0")]
+    partial class v10
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,10 +31,26 @@ namespace FeatureToggle.NET.Store.Migrations
                     b.ToTable("Environments");
                 });
 
+            modelBuilder.Entity("FeatureToggle.NET.Core.Types.Feature", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Features");
+                });
+
             modelBuilder.Entity("FeatureToggle.NET.Core.Types.FeatureValue", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("FeatureId");
 
                     b.Property<string>("Type");
 

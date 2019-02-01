@@ -22,5 +22,7 @@ namespace FeatureToggle.NET.Core.Types
 		public string Type { get; set; }
 
 		public string Value { get; set; }
+
+		public string FeatureId { get; set; }
 	}
 }

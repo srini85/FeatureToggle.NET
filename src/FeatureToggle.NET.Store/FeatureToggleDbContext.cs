@@ -10,6 +10,8 @@ namespace FeatureToggle.NET.Store
 
 		public DbSet<FeatureValue> FeatureValues { get; set; }
 
+		public DbSet<Feature> Features { get; set; }
+
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlite("Data Source=FeatureToggle.db");
