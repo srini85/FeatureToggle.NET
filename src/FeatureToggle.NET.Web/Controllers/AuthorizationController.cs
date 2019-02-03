@@ -2,9 +2,12 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using FeatureToggle.NET.Core.Settings;
 using FeatureToggle.NET.Core.Types.Auth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace FeatureToggle.NET.Web.Controllers
@@ -13,6 +16,13 @@ namespace FeatureToggle.NET.Web.Controllers
     [ApiController]
     public class AuthorizationController : ControllerBase
     {
+	    private readonly AuthSettings _settings;
+
+	    public AuthorizationController(IOptions<AuthSettings> settings)
+	    {
+		    _settings = settings.Value;
+		}
+
 	    [AllowAnonymous]
 	    [HttpPost]
 	    public IActionResult RequestToken([FromBody] TokenRequest request)
@@ -24,14 +34,14 @@ namespace FeatureToggle.NET.Web.Controllers
 				    new Claim(ClaimTypes.Name, request.ClientId)
 			    };
 
-			    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("some-dummy-key-that-should-come-from-app-settings"));
+			    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.EncryptionKey));
 			    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
 			    var token = new JwtSecurityToken(
-				    "sriniapps.com",
-				    "sriniapps.com",
+				    _settings.Issuer,
+				    _settings.Audience,
 				    claims,
-				    expires: DateTime.Now.AddMinutes(30),
+				    expires: DateTime.Now.AddMinutes(_settings.ExpirationInMinutes),
 				    signingCredentials: creds);
 
 			    return Ok(new

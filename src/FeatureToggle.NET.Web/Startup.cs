@@ -1,22 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using FeatureToggle.NET.Core.Services;
 using FeatureToggle.NET.Store;
 using FeatureToggle.NET.Store.Interfaces;
 using FeatureToggle.NET.Store.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace FeatureToggle.NET.Web
 {
-	public class Startup
+	public partial class Startup
 	{
 		public Startup(IConfiguration configuration)
 		{
@@ -25,10 +22,9 @@ namespace FeatureToggle.NET.Web
 
 		public IConfiguration Configuration { get; }
 
-		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			AddAuth(services);
+			SetupAuth(services);
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -40,12 +36,12 @@ namespace FeatureToggle.NET.Web
 					{ "Bearer", Enumerable.Empty<string>() },
 				});
 			});
-
+			
+			services.AddSingleton(Configuration);
 			services.AddScoped<IFeatureToggleDbContext, FeatureToggleDbContext>();
 			services.AddScoped<IFeatureValueService, FeatureValueService>();
 		}
 
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
 			if (env.IsDevelopment())
@@ -54,7 +50,6 @@ namespace FeatureToggle.NET.Web
 			}
 			else
 			{
-				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 				app.UseHsts();
 			}
 
@@ -69,26 +64,6 @@ namespace FeatureToggle.NET.Web
 			app.UseAuthentication();
 
 			app.UseMvc();
-		}
-
-		private void AddAuth(IServiceCollection services)
-		{
-			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-				.AddJwtBearer(options =>
-				{
-					options.TokenValidationParameters = new TokenValidationParameters
-					{
-						ValidateIssuer = true,
-						ValidateAudience = true,
-						ValidateLifetime = true,
-						ValidateIssuerSigningKey = true,
-						ValidIssuer = "sriniapps.com",
-						ValidAudience = "sriniapps.com",
-						IssuerSigningKey = new SymmetricSecurityKey(
-							Encoding.UTF8.GetBytes("some-dummy-key-that-should-come-from-app-settings"))
-					};
-				});
-
 		}
 	}
 }
