@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/srini85/FeatureToggle.NET.svg?branch=master)](https://travis-ci.org/srini85/FeatureToggle.NET)
 # FeatureToggle.NET
 
 ## Introduction
