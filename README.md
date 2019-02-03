@@ -1,4 +1,4 @@
-![Build status](https://ci.appveyor.com/api/projects/status//srini85/featuretoggle-net?branch=master&svg=true)
+![Build status](https://ci.appveyor.com/api/projects/status/o25d2j7bmja8n1cp?svg=true)
 # FeatureToggle.NET
 
 ## Introduction
