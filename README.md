@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/srini85/FeatureToggle.NET.svg?branch=master)](https://travis-ci.org/srini85/FeatureToggle.NET)
+![Build status](https://ci.appveyor.com/api/projects/status//srini85/featuretoggle-net?branch=master&svg=true)
 # FeatureToggle.NET
 
 ## Introduction
