@@ -11,7 +11,7 @@ namespace FeatureToggle.NET.Web
 		public void SetupDependencies(IServiceCollection services)
 		{
 			services.AddSingleton(Configuration);
-			services.AddScoped<IFeatureToggleDbContext, FeatureToggleDbContext>();
+			services.AddScoped<IFeatureToggleDbContext, SqlLiteDbContext>();
 			services.AddScoped<IFeatureValueService, FeatureValueService>();
 			services.AddScoped<IAuthService, AuthService>();
 			services.AddScoped<ICryptoService, CryptoService>();

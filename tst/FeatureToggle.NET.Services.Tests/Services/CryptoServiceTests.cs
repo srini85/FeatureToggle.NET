@@ -2,7 +2,7 @@ using FeatureToggle.NET.Services.Services;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace FeatureToggle.NET.Services.Tests
+namespace FeatureToggle.NET.Services.Tests.Services
 {
 	public class CryptoServiceTests
 	{
