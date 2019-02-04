@@ -1,8 +1,7 @@
 ﻿using FeatureToggle.NET.Core.Types;
-using FeatureToggle.NET.Store.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace FeatureToggle.NET.Store
+namespace FeatureToggle.NET.Services.Data
 {
 	public class FeatureToggleDbContext : DbContext, IFeatureToggleDbContext
 	{
@@ -11,6 +10,10 @@ namespace FeatureToggle.NET.Store
 		public DbSet<FeatureValue> FeatureValues { get; set; }
 
 		public DbSet<Feature> Features { get; set; }
+
+		public DbSet<User> Users { get; set; }
+
+		public DbSet<LoginDetail> LoginDetails { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{

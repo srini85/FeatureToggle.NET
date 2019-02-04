@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using FeatureToggle.NET.Core.Services;
-using FeatureToggle.NET.Store;
-using FeatureToggle.NET.Store.Interfaces;
-using FeatureToggle.NET.Store.Services;
+using FeatureToggle.NET.Services;
+using FeatureToggle.NET.Services.Data;
+using FeatureToggle.NET.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;

@@ -2,8 +2,8 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using FeatureToggle.NET.Core.Auth;
 using FeatureToggle.NET.Core.Settings;
-using FeatureToggle.NET.Core.Types.Auth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;

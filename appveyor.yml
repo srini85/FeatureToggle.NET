@@ -2,12 +2,11 @@ image: Visual Studio 2017
 
 configuration: Release
 
-# scripts to run before build
 before_build:
   - dotnet restore
 
 build_script:
   - dotnet build .\FeatureToggle.NET.sln
 
-#test_script:
-# add tests when we have them
+test_script:
+  - dotnet test .\FeatureToggle.NET.sln

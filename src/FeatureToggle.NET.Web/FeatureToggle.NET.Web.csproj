@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FeatureToggle.NET.Core\FeatureToggle.NET.Core.csproj" />
-    <ProjectReference Include="..\FeatureToggle.NET.Store\FeatureToggle.NET.Store.csproj" />
+    <ProjectReference Include="..\FeatureToggle.NET.Services\FeatureToggle.NET.Services.csproj" />
   </ItemGroup>
 
 </Project>

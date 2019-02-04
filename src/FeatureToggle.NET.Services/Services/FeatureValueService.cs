@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using FeatureToggle.NET.Core.Services;
 using FeatureToggle.NET.Core.Types;
-using FeatureToggle.NET.Store.Interfaces;
+using FeatureToggle.NET.Services.Data;
 using Newtonsoft.Json;
 
-namespace FeatureToggle.NET.Store.Services
+namespace FeatureToggle.NET.Services.Services
 {
 	public class FeatureValueService : IFeatureValueService
 	{

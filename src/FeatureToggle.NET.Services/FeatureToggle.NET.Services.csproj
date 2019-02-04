@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>FeatureToggle.NET.Services</AssemblyName>
+    <RootNamespace>FeatureToggle.NET.Services</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

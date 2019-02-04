@@ -1,4 +1,4 @@
-﻿namespace FeatureToggle.NET.Core.Types.Auth
+﻿namespace FeatureToggle.NET.Core.Auth
 {
 	public class TokenRequest
 	{
