@@ -1,9 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using FeatureToggle.NET.Core.Services;
-using FeatureToggle.NET.Services;
-using FeatureToggle.NET.Services.Data;
-using FeatureToggle.NET.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -36,10 +32,8 @@ namespace FeatureToggle.NET.Web
 					{ "Bearer", Enumerable.Empty<string>() },
 				});
 			});
-			
-			services.AddSingleton(Configuration);
-			services.AddScoped<IFeatureToggleDbContext, FeatureToggleDbContext>();
-			services.AddScoped<IFeatureValueService, FeatureValueService>();
+
+			SetupDependencies(services);
 		}
 
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)

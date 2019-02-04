@@ -1,4 +1,4 @@
-﻿namespace FeatureToggle.NET.Services.Services
+﻿namespace FeatureToggle.NET.Core.Auth
 {
 	public class SaltedHash
 	{

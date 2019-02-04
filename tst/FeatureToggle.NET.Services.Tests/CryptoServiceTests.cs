@@ -34,5 +34,19 @@ namespace FeatureToggle.NET.Services.Tests
 			result.Hash.Should().NotBe(result2.Hash);
 			result.Salt.Should().NotBe(result2.Salt);
 		}
+
+		[Test]
+		public void VerifyPasswordWithHash_ValidPasswordAndHash_ReturnsTrue()
+		{
+			// Arrange
+			var cryptoService = new CryptoService();
+
+			// Act
+			var saltedHash = cryptoService.GenerateHash("known_password");
+			var result = cryptoService.VerifyPasswordWithHash("known_password", saltedHash);
+
+			// Assert
+			result.Should().BeTrue();
+		}
 	}
 }

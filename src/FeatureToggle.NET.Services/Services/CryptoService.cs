@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using FeatureToggle.NET.Core.Auth;
 
 namespace FeatureToggle.NET.Services.Services
 {
-	public class CryptoService
+	public class CryptoService : ICryptoService
 	{
 		public const int SaltBytes = 24;
 
@@ -17,7 +18,7 @@ namespace FeatureToggle.NET.Services.Services
 			return new SaltedHash
 			{
 				Hash = hash,
-				Salt = BitConverter.ToString(salt)
+				Salt = Convert.ToBase64String(salt)
 			};
 		}
 
@@ -54,6 +55,12 @@ namespace FeatureToggle.NET.Services.Services
 			{
 				return BitConverter.ToString(pbkdf2.ComputeHash(saltedInput));
 			}
+		}
+
+		public bool VerifyPasswordWithHash(string password, SaltedHash saltedHash)
+		{
+			var generatedHash = GenerateHash(password, Convert.FromBase64String(saltedHash.Salt));
+			return generatedHash == saltedHash.Hash;
 		}
 	}
 }
