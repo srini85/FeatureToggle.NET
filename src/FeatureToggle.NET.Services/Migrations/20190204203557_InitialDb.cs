@@ -2,7 +2,7 @@
 
 namespace FeatureToggle.NET.Services.Migrations
 {
-    public partial class initialdb : Migration
+    public partial class InitialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
