@@ -15,6 +15,20 @@ namespace FeatureToggle.NET.Services.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.1-servicing-10028");
 
+            modelBuilder.Entity("FeatureToggle.NET.Core.Types.ClientEnvironmentMap", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ClientId");
+
+                    b.Property<string>("EnvironmentId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ClientEnvironmentMaps");
+                });
+
             modelBuilder.Entity("FeatureToggle.NET.Core.Types.Env", b =>
                 {
                     b.Property<string>("Id")
@@ -73,6 +87,20 @@ namespace FeatureToggle.NET.Services.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LoginDetails");
+                });
+
+            modelBuilder.Entity("FeatureToggle.NET.Core.Types.ToggleCriterion", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("SerializedCriteria");
+
+                    b.Property<string>("Type");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ToggleCriteria");
                 });
 
             modelBuilder.Entity("FeatureToggle.NET.Core.Types.User", b =>

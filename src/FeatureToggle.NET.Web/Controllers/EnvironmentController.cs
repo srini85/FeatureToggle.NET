@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FeatureToggle.NET.Web.Controllers
 {
@@ -6,5 +7,14 @@ namespace FeatureToggle.NET.Web.Controllers
     [ApiController]
     public class EnvironmentController : ControllerBase
     {
-    }
+		[HttpPost]
+		public string Post() => "empty";
+
+	    [HttpPost]
+	    [Route("/assign")]
+	    public string AssignClientToEnvironment()
+	    {
+			throw new NotImplementedException();
+	    }
+	}
 }

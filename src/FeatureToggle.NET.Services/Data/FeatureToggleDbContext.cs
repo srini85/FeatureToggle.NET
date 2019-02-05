@@ -23,5 +23,7 @@ namespace FeatureToggle.NET.Services.Data
 		public DbSet<User> Users { get; set; }
 
 		public DbSet<LoginDetail> LoginDetails { get; set; }
+		public DbSet<ClientEnvironmentMap> ClientEnvironmentMaps { get; set; }
+		public DbSet<ToggleCriterion> ToggleCriteria { get; set; }
 	}
 }

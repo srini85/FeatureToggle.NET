@@ -53,7 +53,7 @@ namespace FeatureToggle.NET.Services.Services
 
 			using (HashAlgorithm pbkdf2 = new SHA512CryptoServiceProvider())
 			{
-				return BitConverter.ToString(pbkdf2.ComputeHash(saltedInput));
+				return Convert.ToBase64String(pbkdf2.ComputeHash(saltedInput));
 			}
 		}
 
