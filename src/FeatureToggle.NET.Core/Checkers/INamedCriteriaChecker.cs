@@ -2,7 +2,7 @@
 
 namespace FeatureToggle.NET.Core.Checkers
 {
-	public interface IFeatureCriteriaChecker<in TParams>
+	public interface INamedCriteriaChecker<in TParams>
 	{
 		string Name { get; set; }
 
